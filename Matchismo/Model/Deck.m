@@ -39,6 +39,7 @@
     
     if([self.cards count])
     {
+        // comment
         unsigned index=arc4random() % [self.cards count];
         randomCard=self.cards[index];
         [self.cards removeObjectAtIndex:index];
