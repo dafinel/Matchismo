@@ -12,5 +12,5 @@
 @interface CardGameViewController : UIViewController
 
 - (Deck *)createDeak;
-- (void)setNumberOfCardsForGame : (NSUInteger) nr;
+- (void)setNumberOfCardsForGame:(NSUInteger)nr;
 @end

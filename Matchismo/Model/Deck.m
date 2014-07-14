@@ -10,22 +10,26 @@
 
 @interface Deck()
 
-@property(strong,nonatomic) NSMutableArray *cards;
+@property (nonatomic, strong) NSMutableArray *cards;
 
 @end
 
 @implementation Deck
 
--(NSMutableArray *)cards{
+- (NSMutableArray *)cards {
+    if(!_cards) {
+        _cards=[[NSMutableArray alloc] init];
+    }
     
-    if(!_cards) _cards=[[NSMutableArray alloc] init];
     return _cards;
 }
--(void)addCard:(Card *)card{
-    
+
+- (void)addCard:(Card *)card {
     [self addCard:card atTop:NO];
 }
--(void) addCard:(Card *)card atTop:(BOOL)atTop
+
+- (void)addCard:(Card *)card
+          atTop:(BOOL)atTop
 {
     if(atTop) {
         [self.cards insertObject:card atIndex:0];
@@ -33,15 +37,13 @@
         [self.cards addObject:card];
     }
 }
--(Card*)drowRandomCard{
-    
+
+- (Card*)drowRandomCard {
     Card *randomCard=nil;
     
-    if([self.cards count])
-    {
-        // comment
-        unsigned index=arc4random() % [self.cards count];
-        randomCard=self.cards[index];
+    if([self.cards count]) {
+        unsigned index = arc4random() % [self.cards count];
+        randomCard = self.cards[index];
         [self.cards removeObjectAtIndex:index];
     }
     
