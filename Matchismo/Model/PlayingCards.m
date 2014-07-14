@@ -10,66 +10,64 @@
 
 @implementation PlayingCards
 
+@synthesize suit = _suit;
 
--(int)match:(NSArray *)othercards{
-    int score=0;
-    int matchAll=1;
-    if([othercards count]==1){
-        PlayingCards *othercard=[othercards firstObject];
-        if(othercard.rank==self.rank){
-            score=4;
-            
+- (int)match:(NSArray *)othercards {
+    int score = 0;
+    int matchAll = 1;
+    
+    if([othercards count] == 1){
+        PlayingCards *othercard = [othercards firstObject];
+        
+        if(othercard.rank == self.rank){
+            score = 4;
         } else if([othercard.suit isEqualToString:self.suit]){
-            score=1;
+            score = 1;
         }
-    } else{
+    } else {
         for(PlayingCards *othercard in othercards){
-           // PlayingCards *othercard=[othercards firstObject];
-            if(othercard.rank==self.rank){
-                score=4;
+            // PlayingCards *othercard=[othercards firstObject];
+            if(othercard.rank == self.rank){
+                score = 4;
             } else if([othercard.suit isEqualToString:self.suit]){
-                score=1;
+                score = 1;
             } else{
-                matchAll=0;
+                matchAll = 0;
             }
         }
         if(matchAll){
-            score=12;
+            score = 12;
         }
-        
     }
-    
     
     return score;
 }
 
-+(NSArray *)rankString{
++ (NSArray *)rankString {
     return @[@"?",@"A",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"J",@"Q",@"K"];
 }
--(NSString *)contents{
+
+- (NSString *)contents {
     NSArray *rankString= [PlayingCards rankString];
     return [rankString[self.rank] stringByAppendingString:self.suit];
-    
 }
-@synthesize suit=_suit;
 
-+(NSArray *)validSuits{
- 
++ (NSArray *)validSuits {
     return @[@"♠︎",@"♣︎",@"♥︎",@"♦︎"];
 }
--(void)setSuit:(NSString *)suit{
 
+- (void)setSuit:(NSString *)suit {
     if([[PlayingCards validSuits] containsObject:suit]){
-        _suit=suit;
+        _suit = suit;
     }
 }
--(NSString *)suit{
+
+- (NSString *)suit {
     return _suit ? _suit:@"?";
 }
-+(NSUInteger) maxRank{
+
++ (NSUInteger) maxRank {
     return [[self rankString]count]-1;
 }
-
-
 
 @end

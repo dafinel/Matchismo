@@ -16,10 +16,9 @@
 @implementation PlayingCardGameViewController
 
 #pragma mark - initialization
-- (Deck *)createDeak
-{
-    return [[PlayingCardDeck alloc]init];
-}
 
+- (Deck *)createDeak{
+    return [[PlayingCardDeck alloc] init];
+}
 
 @end

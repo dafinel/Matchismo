@@ -9,10 +9,12 @@
 #import <Foundation/Foundation.h>
 
 @interface Card : NSObject
-@property (weak, nonatomic) NSString *contents;
-@property (nonatomic, getter = isChosen) BOOL chosen;
+
+@property (nonatomic, weak              ) NSString *contents;
+@property (nonatomic, getter = isChosen ) BOOL chosen;
 @property (nonatomic, getter = isMatched) BOOL matched;
--(int)match :(NSArray *)othercards;
+
+- (int)match:(NSArray *)othercards;
 
 
 @end
